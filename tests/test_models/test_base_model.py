@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """ unittest for BaseModel class """
 
 import unittest
@@ -24,3 +25,6 @@ class test_BaseModel(unittest.TestCase):
         self.assertNotEqual(test.updated_at, a)
 
         self.assertIsInstance(BaseModel().to_dict(), dict)
+
+if __name__ == "__main__":
+    unittest.main()
