@@ -3,7 +3,6 @@
 
 import uuid
 from datetime import datetime
-""" used to generate unique id """
 
 
 class BaseModel:
