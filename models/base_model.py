@@ -30,5 +30,4 @@ class BaseModel:
         toDict["__class__"] = type(self).__name__
         toDict['created_at'] = toDict['created_at'].isoformat()
         toDict['updated_at'] = toDict['updated_at'].isoformat()
-
         return toDict
