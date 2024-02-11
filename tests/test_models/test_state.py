@@ -20,6 +20,17 @@ class TestState(unittest.TestCase):
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
+    def test_params(self):
+        stt1 = State()
+        stt3 = State("hello", "wait", "in")
+
+        k = f"{type(stt1).__name__}.{stt1.id}"
+        self.assertIsInstance(stt1.name, str)
+        self.assertEqual(stt3.name, "")
+        stt1.name = "Chicago"
+        self.assertEqual(stt1.name, "Chicago")
+        self.assertIn(k, storage.all())
+
     def test_init(self):
         """Test public instances"""
         usr1 = State()

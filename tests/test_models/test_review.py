@@ -20,6 +20,17 @@ class TestState(unittest.TestCase):
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
+    def test_args(self):
+        """Test class attributes"""
+
+        rvw1 = Review()
+        rvw3 = Review("hello", "wait", "in")
+        k = f"{type(rvw1).__name__}.{rvw1.id}"
+        self.assertIsInstance(rvw1.text, str)
+        self.assertIsInstance(rvw1.user_id, str)
+        self.assertIsInstance(rvw1.place_id, str)
+        self.assertEqual(rvw3.text, "")
+
     def test_init(self):
         """Test public instances"""
         usr1 = Review()
