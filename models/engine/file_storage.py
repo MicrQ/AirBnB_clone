@@ -3,7 +3,7 @@
 
 import os
 import json
-from models.base_model import BaseModel
+from models.user import BaseModel, User
 
 
 class FileStorage:
@@ -29,7 +29,7 @@ class FileStorage:
         """ deserializes the JSON file to __objects
             (only if the JSON file (__file_path) exists
         """
-        clas_s = {'BaseModel': BaseModel}
+        clas_s = {'BaseModel': BaseModel, 'User': User}
 
         if not os.path.exists("file.json"):
             return

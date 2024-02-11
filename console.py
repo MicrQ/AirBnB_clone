@@ -3,11 +3,12 @@
 
 import cmd
 from models.base_model import BaseModel
+from models.user import User
 from models import storage
 import re
 import json
 
-clas_s = {'BaseModel': BaseModel}
+clas_s = {'BaseModel': BaseModel, 'User': User}
 
 
 class HBNBCommand(cmd.Cmd):
