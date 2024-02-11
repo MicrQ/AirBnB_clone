@@ -35,7 +35,8 @@ class FileStorage:
             (only if the JSON file (__file_path) exists
         """
         clas_s = {'BaseModel': BaseModel, 'User': User, 'Amenity': Amenity,
-                  'City': City, 'Place': Place, 'Review': Review, 'State': State}
+                  'City': City, 'Place': Place, 'Review': Review,
+                  'State': State}
 
         if not os.path.exists("file.json"):
             return
