@@ -20,6 +20,18 @@ class TestState(unittest.TestCase):
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
+    def test_args(self):
+        """Test class attributes"""
+
+        am1 = Amenity()
+        am2 = Amenity(**a1.to_dict())
+        am3 = Amenity("hello", "wait", "in")
+
+        k = f"{type(am1).__name__}.{am1.id}"
+        self.assertIsInstance(am1.name, str)
+        self.assertIn(k, storage.all())
+        self.assertEqual(am3.name, "")
+
     def test_init(self):
         """Test public instances"""
         usr1 = Amenity()
