@@ -23,7 +23,8 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     def do_exit(self, arg):
-        """to exit the interpreter, type: exit"""
+        """to exit the interpreter,
+        Usage: (hbnb) exit"""
         return True
 
     def do_EOF(self, arg):
@@ -32,15 +33,17 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_help(self, arg):
-        """To get help, type: help <topic>"""
+        """To get help document
+            Usage: (hbnb) help <optional command>"""
         return super().do_help(arg)
 
     def emptyline(self):
-        """ to execute nothing when emptyline entered"""
+        """ executes nothing when emptyline entered"""
         pass
 
     def do_create(self, arg):
-        """Creates a new Instance"""
+        """Creates a new Instance of a given class
+            Usage: create <Class Name>"""
         args = arg.split()
         if not valid(args):
             return
@@ -49,7 +52,8 @@ class HBNBCommand(cmd.Cmd):
         print(obj.id)
 
     def do_show(self, arg):
-        """Displays string representation of instance"""
+        """Displays string representation of instance
+            Usage: show <class name> <instance id>"""
         args = arg.split()
         if not valid(args, id=True):
             return
@@ -64,7 +68,8 @@ class HBNBCommand(cmd.Cmd):
         print(str_repr)
 
     def do_destroy(self, arg):
-        """Deletes an instance based on class name and id"""
+        """Deletes an instance based on class name and id
+            Usage: destroy <class name> <instance id>"""
         args = arg.split()
         if not valid(args, id=True):
             return
@@ -80,17 +85,17 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def precmd(self, line):
-        """to modif command"""
+        """to modify command before execution"""
         args = line.split('.')
         if len(args) > 1 and args[1] == 'all()':
             return "all " + args[0]
         if len(args) > 1 and args[1] == 'count()':
             return "count " + args[0]
         return line
-        
 
     def do_all(self, arg):
-        """Prints a string representation of instances"""
+        """Prints a string representation of instances
+            Usage: all <optional class name>"""
 
         args = arg.split()
         objects = storage.all()
@@ -107,7 +112,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
     def do_update(self, arg):
-        """Updates an instance based on the class name and id"""
+        """Updates an instance based on the class name and id
+        Usage: update <class name> <instance id> <attr name> <attr value>"""
         args = arg.split()
         if not valid(args, id=True):
             return
@@ -118,19 +124,6 @@ class HBNBCommand(cmd.Cmd):
         if str_repr is None:
             print('** no instance found **')
             return
-
-        # cmp_json = re.findall(r"{.*}", arg)
-        # if cmp_json:
-        #     pld = None
-        #     try:
-        #         pld: dict = json.loads(cmp_json[0])
-        #     except Exception:
-        #         print("** invalid syntax")
-        #         return
-        #     for k, v in pld.items():
-        #         setattr(objects, k, v)
-        #     storage.save()
-        #     return
 
         if len(args) < 3:
             print("** attribute name missing **")
@@ -147,7 +140,10 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_count(self, arg):
-        """Counts the number of instances"""
+        """Counts the number of instances
+            Usage: <class name>.count()
+                    or
+                   count <class name>"""
         if arg not in clas_s:
             print("** class doesn't exist **")
             return
