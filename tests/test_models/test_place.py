@@ -20,6 +20,28 @@ class TestState(unittest.TestCase):
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
+    def test_params(self):
+        """Test class attributes"""
+
+        plc1 = Place()
+        plc3 = Place("hello", "wait", "in")
+        k = f"{type(plc1).__name__}.{plc1.id}"
+        self.assertIsInstance(plc1.name, str)
+        self.assertIn(k, storage.all())
+        self.assertEqual(plc3.name, "")
+
+        self.assertIsInstance(plc1.name, str)
+        self.assertIsInstance(plc1.user_id, str)
+        self.assertIsInstance(plc1.city_id, str)
+        self.assertIsInstance(plc1.description, str)
+        self.assertIsInstance(plc1.number_bathrooms, int)
+        self.assertIsInstance(plc1.number_rooms, int)
+        self.assertIsInstance(plc1.price_by_night, int)
+        self.assertIsInstance(plc1.max_guest, int)
+        self.assertIsInstance(plc1.longitude, float)
+        self.assertIsInstance(plc1.latitude, float)
+        self.assertIsInstance(plc1.amenity_ids, list)
+
     def test_init(self):
         """Test public instances"""
         usr1 = Place()
