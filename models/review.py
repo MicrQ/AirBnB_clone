@@ -7,6 +7,6 @@ from models.base_model import BaseModel
 class Review(BaseModel):
     """representes Review given by user"""
 
-    palce_id = ""
+    place_id = ""
     user_id = ""
     text = ""
