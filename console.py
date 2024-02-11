@@ -79,8 +79,17 @@ class HBNBCommand(cmd.Cmd):
         del objects[key]
         storage.save()
 
+    def precmd(self, line):
+        """to modif command"""
+        args = line.split('.')
+        if len(args) > 1 and args[1] == 'all()':
+            return "all " + args[0]
+        return line
+        
+
     def do_all(self, arg):
         """Prints a string representation of instances"""
+
         args = arg.split()
         objects = storage.all()
 
