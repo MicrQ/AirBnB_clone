@@ -24,7 +24,7 @@ class TestState(unittest.TestCase):
         """Test class attributes"""
 
         am1 = Amenity()
-        am2 = Amenity(**a1.to_dict())
+        am2 = Amenity(**am1.to_dict())
         am3 = Amenity("hello", "wait", "in")
 
         k = f"{type(am1).__name__}.{am1.id}"
