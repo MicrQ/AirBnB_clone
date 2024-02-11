@@ -113,7 +113,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """Updates an instance based on the class name and id
-        Usage: update <class name> <instance id> <attr name> <attr value>"""
+            Usage: update <class name> <instance id> <attr name> <attr value>"""
         args = arg.split()
         if not valid(args, id=True):
             return
