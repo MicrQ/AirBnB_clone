@@ -7,6 +7,10 @@ from models.city import City
 from models import storage
 from datetime import datetime
 
+cty1 = City()
+cty2 = City(**cty1.to_dict())
+cty3 = City("wow", "mom", "coc")
+
 
 class TestState(unittest.TestCase):
     """Test cases"""
@@ -19,6 +23,14 @@ class TestState(unittest.TestCase):
         FileStorage._FileStorage__objects = {}
         if os.path.exists(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
+
+    def test_args(self):
+        """Test method for class attributes"""
+        k = f"{type(cty1).__name__}.{cty1.id}"
+        self.assertIsInstance(cty1.name, str)
+        self.assertEqual(cty3.name, "")
+        cty1.name = "Abuja"
+        self.assertEqual(cty1.name, "Abuja")
 
     def test_init(self):
         """Test public instances"""
