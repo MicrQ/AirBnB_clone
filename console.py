@@ -84,6 +84,8 @@ class HBNBCommand(cmd.Cmd):
         args = line.split('.')
         if len(args) > 1 and args[1] == 'all()':
             return "all " + args[0]
+        if len(args) > 1 and args[1] == 'count()':
+            return "count " + args[0]
         return line
         
 
@@ -143,6 +145,17 @@ class HBNBCommand(cmd.Cmd):
             values = args[3].split()
             setattr(str_repr, args[2], parseStr(values[0]))
         storage.save()
+
+    def do_count(self, arg):
+        """Counts the number of instances"""
+        if arg not in clas_s:
+            print("** class doesn't exist **")
+            return
+        i = 0
+        for k in storage.all().keys():
+            if re.match(arg, k):
+                i += 1
+        print(i)
 
 
 def valid(args, id=False):
